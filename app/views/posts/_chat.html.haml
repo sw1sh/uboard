@@ -1,0 +1,60 @@
+= javascript_include_tag "web_socket.js"
+
+:javascript
+
+  // Everything below is the same as using standard WebSocket.
+
+  var ws;
+
+  function init() {
+
+    // Connect to Web Socket.
+    // Change host/port here to your own Web Socket server.
+    ws = new WebSocket("ws://uboard.herokuapp.com:10081/");
+
+    // Set event handlers.
+    ws.onopen = function() {
+      output("Welcome to the fucking chat!");
+    };
+    ws.onmessage = function(e) {
+      // e.data contains received string.
+      output(e.data);
+    };
+    ws.onclose = function() {
+      output("Connection closed");
+    };
+    ws.onerror = function() {
+      output("Error");
+    };
+
+  }
+
+  function onSubmit() {
+    var name = $("#name");
+    var input = $("#input");
+    // You can send message to the Web Socket using ws.send.
+    ws.send(name.val() + ":" + input.val());
+    // output("send: " + input.value);
+    input.val("");
+    input.focus();
+  }
+
+  function onCloseClick() {
+    ws.close();
+  }
+
+  function output(str) {
+    var log = $("#log");
+    log.html(log.html() + "<br>" + str);
+  }
+
+  init();
+
+%form{ :onsubmit=>"onSubmit(); return false;"}
+  = label_tag "Name:"
+  = text_field_tag "name", "Anonymous"
+  = text_field_tag "input"
+  = submit_tag "Send"
+  %button{:onclick=>"onCloseClick(); return false;"}close
+
+#log

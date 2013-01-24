@@ -1,0 +1,9 @@
+= form_for @comment do |f|
+    = f.hidden_field :post_id, :value => @post.id
+
+    = f.label "Author"
+    = f.text_field :author
+    %p
+        = f.text_area :message
+    %p
+        = f.submit "Comment"

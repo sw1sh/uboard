@@ -1,0 +1,16 @@
+- @posts.drop(@posts_showed).take(2).each do |post|
+  .post
+    %span
+      = post.author
+      = link_to post.title, post_path(post)    
+    = post.tag_list
+<<<<<<< HEAD
+  .toggled{ :id => "more#{post.id}", :style=>"display: none;" }
+.more_posts
+=======
+    %time
+      = post.created_at.to_date
+    .preview
+      = link_to " ", preview_post_path(:id => post.id), :remote => true
+  .toggled{ :id => "more#{post.id}", :style=>"display: none;" }
+>>>>>>> 28664b15dd5025a1b27c051464635f1035348fac

@@ -1,0 +1,16 @@
+.mid
+  .lside
+    .topPanelSearch
+      = render "search"
+    .tags
+      = render "tags"
+
+  .board
+    .list
+      = render "list"
+      .more_posts
+    = link_to "Show more...", show_more_posts_path, :class => "show_more", :remote => true  
+  .rside
+    = render "chat"
+
+        

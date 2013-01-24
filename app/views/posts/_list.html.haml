@@ -1,0 +1,12 @@
+- @posts.drop(@posts_showed).take(2).each do |post|
+  .post
+    %span
+      = post.author
+      = link_to post.title, post_path(post)
+    = post.created_at.to_date
+    = link_to "Preview", preview_post_path(:id => post.id), :remote => true
+    = post.tag_list
+    %time
+      = post.created_at.to_date
+ 
+  .toggled{ :id => "more#{post.id}", :style=>"display: none;" }

@@ -1,0 +1,23 @@
+.mid
+  .lside
+<<<<<<< HEAD
+    .topPanelSearch
+      = render "search"
+=======
+>>>>>>> 28664b15dd5025a1b27c051464635f1035348fac
+    .tags
+      = render "tags"
+
+  .board
+    .list
+      = render "list"
+<<<<<<< HEAD
+    = link_to "Show more...", show_more_posts_path, :class => "show_more", :remote => true
+  .rside
+    = render "chat"
+=======
+  .rside
+    = render "chat"
+
+        
+>>>>>>> 28664b15dd5025a1b27c051464635f1035348fac

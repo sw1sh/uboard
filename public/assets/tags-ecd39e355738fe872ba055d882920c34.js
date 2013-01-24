@@ -1,0 +1,1 @@
+jQuery(function(e){e(".tag_response").bind("ajax:success",function(t,n,r){e(".tags").html(n),e(".search_button").click()})});

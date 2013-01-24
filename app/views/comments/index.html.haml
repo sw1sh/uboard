@@ -1,0 +1,10 @@
+- if @comments.empty?
+	%div= "No comments yet. Make some, fucka!"
+- else
+	%table#comments
+		%tbody
+			- @comments.each do |comment|
+				%tr
+					%td= comment.author 
+					%td= comment.message
+					%td= comment.created_at
