@@ -1,11 +1,13 @@
 == Getting Started
-1. Install gems
+===1. Install gems
   bundle install
-2. Setup a database
+===2. Setup your database
   rake db:setup
-3. There is a dropbox image upload, so you need to authorize first
+===3. There is a dropbox image upload, so you need to authorize the app first
   rake paperclipdropbox:authorize
-4. Configure the mailer in config/initializers/setup_mail.rb
-5. Write down your recaptcha keys in config/initializers/recaptcha.rb
+===4. Configure your mailer 
+  config/initializers/setup_mail.rb
+===5. Write down your recaptcha keys
+  config/initializers/recaptcha.rb
 
-DEMO: http://uboard.herokuapp.com/
+DEMO: http://uboard.herokuapp.com
