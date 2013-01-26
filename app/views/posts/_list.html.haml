@@ -1,12 +1,18 @@
-- @posts.drop(@posts_showed).take(2).each do |post|
-  .post
-    %span
-      = post.author
-      = link_to post.title, post_path(post)
-    = post.created_at.to_date
-    = link_to "Preview", preview_post_path(:id => post.id), :remote => true
-    = post.tag_list
-    %time
-      = post.created_at.to_date
- 
-  .toggled{ :id => "more#{post.id}", :style=>"display: none;" }
+- @posts.take(@posts_showed).each do |post|
+  %tr
+    %td
+      .row-fluid
+        .span2
+          = post.author
+        .span3
+          = link_to post.title, post_path(post)
+        .span2
+          %time
+            = post.created_at.to_date
+        .span2
+          = post.tag_list
+        .span1
+          = link_to "Preview", preview_post_path(:id => post.id), :remote => true
+      .row
+        .span8
+          .collapse{ :id => "more#{post.id}" }

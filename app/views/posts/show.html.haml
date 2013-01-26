@@ -1,16 +1,15 @@
-= stylesheet_link_tag "prettyPhoto"
-= javascript_include_tag "jquery.prettyPhoto"
+.row
+  .span2
+    %b
+      = @post.title
+  .span10
+    = raw @post.content
+.row 
+  .span2
+    = "author: #{@post.author}"
+  .span10
+    = "tags: #{@post.tag_list}"
 
-:javascript
-  $(document).ready(function(){
-      $("a[rel^='prettyPhoto']").prettyPhoto({social_tools: false, theme: 'light_square'});
-      
-  });
-
-%p= @post.title
-%p= @post.author
-%p= @post.tag_list
-%p= raw @post.content
 - @post.images.each do |image_field|
   = link_to image_tag(image_field.image.url(:thumb)), image_field.image.url(:original), :rel => "prettyPhoto"
 - if @editable

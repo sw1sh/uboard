@@ -6,3 +6,6 @@
 3. There is a dropbox image upload, so you need to authorize first
   rake paperclipdropbox:authorize
 4. Configure the mailer in config/initializers/setup_mail.rb
+5. Write down your recaptcha keys in config/initializers/recaptcha.rb
+
+DEMO: http://uboard.herokuapp.com/

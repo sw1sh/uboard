@@ -1,41 +1,34 @@
+!!!
 %html
   %head
-    %title U-board
-    = stylesheet_link_tag :application
-    = javascript_include_tag :application
+    %meta{:charset => "utf-8"}
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, maximum-scale=1"}
+    %title= content_for?(:title) ? yield(:title) : "U-board"
+    %meta{:content => "", :name => "description"}
+    %meta{:content => "", :name => "author"}
+    = stylesheet_link_tag "application.css.scss"
+    = javascript_include_tag "application"
     = csrf_meta_tags
-    
-    
+    = yield(:head)
+        
   %body
-    %header
-      %h1
-        = link_to 'U-board', root_path
-    .topPanel 
-      .topPanelLside
-        left
-      .topPanelMid
-        .topPanelLinks
-          = link_to "New Post", new_post_path
-          = link_to 'Main', root_path
-          - if !admin_exists?
-            = link_to "Sign up", new_admin_registration_path
-          - elsif admin_signed_in?
-            = link_to "Sign out", destroy_admin_session_path, :method => :delete
-          - else
-            = link_to "Sign in", new_admin_session_path
-        .topPanelButtons
-          buttons div
-      .topPanelRside
-        right
-    .main
-      - if flash[:notice]
-        #notice.message= flash[:notice]
-      - elsif flash[:warning]
-        #warning.message= flash[:warning]
+    #wrap
+      %header.navbar.navbar-fixed-top
+        %nav.navbar-inner
+          .container
+            = render 'layouts/navigation'
 
-      = yield
-    %footer
-      by Herp&Derp.
-      %br
-        Contact us: 
-        %adress uboarders@gmail.com
+      #main{:role => "main"}
+        .container
+          .content
+            .row
+              .span12
+                = render 'layouts/messages'
+                = yield
+      #push
+
+    #footer
+      .container
+        %p.credit
+          =link_to "Herp&Derp", "mailto:uboarders@gmail.com"
+      

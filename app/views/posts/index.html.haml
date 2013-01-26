@@ -1,16 +1,28 @@
-.mid
-  .lside
-    .topPanelSearch
-      = render "search"
-    .tags
-      = render "tags"
+.row
+  .span1
+    .container
+      #tags
+        = render "tags"
 
-  .board
-    .list
+  .span9
+    .offset6
+      = render "search"   
+
+    .row-fluid
+      .span2
+        Author
+      .span3
+        Title
+      .span2
+        Time
+      .span2
+        Tags
+      .span1
+    %table.table.table-striped#list
       = render "list"
-      .more_posts
-    = link_to "Show more...", show_more_posts_path, :class => "show_more", :remote => true  
-  .rside
-    = render "chat"
+      #more_posts
+    .pager
+      = link_to "Show more", show_more_posts_path, :class => 'next', :id => "show_more", :remote => true
 
-        
+  .span2
+    = render "chat"

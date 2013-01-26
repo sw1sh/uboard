@@ -1,9 +1,8 @@
-.test
-  - @images.each do |image|
-    = link_to image_tag(image[:uri], :height => "50%"), image[:uri], :rel => "prettyPhoto"
+- @images.each do |image|
+  = link_to image_tag(image[:uri], :height => "90%"), image[:uri], :rel => "prettyPhoto"
 
 :javascript
-  parent.$(".new_image_field").before("<div class=image_field_#{@new_field_id}><input id=#{@new_field_id} name=#{@new_field_name} type=file></div>");
-  parent.$(".image_field_#{@new_field_id}").change(function () {
-    parent.$(".image_preview").change();
+  parent.$("#new_image_field").before("<div id=image_field_#{@new_field_id}><input id=#{@new_field_id} name=#{@new_field_name} type=file></div>");
+  parent.$("#image_field_#{@new_field_id}").change(function () {
+    parent.$(".image_file_field").change();
   });

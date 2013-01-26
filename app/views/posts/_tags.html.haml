@@ -1,9 +1,15 @@
-= javascript_include_tag 'tags'
-
-= @include_tags
-%br
-= @exclude_tags
-%br
 - tag_cloud(@all_tags, {}) do |tag, css_class|
-  = link_to (@include_tags.member?(tag.name) ? tag.name+'!' : tag.name), { :action => :tags, :include_tag => tag.name }, :class => 'tag_response', :remote => true
-  = link_to (@exclude_tags.member?(tag.name) ? 'x' : 'v'), { :action => :tags, :exclude_tag => tag.name }, :class => 'tag_response', :remote => true
+  %a.btn.btn-mini{:href => tags_posts_path(:include_tag => tag.name), "data-remote" => true}
+    -if @include_tags.member?(tag.name) 
+      %i.icon-ok-circle
+    = tag.name
+  %a.btn.btn-mini{:href => tags_posts_path(:exclude_tag => tag.name), "data-remote" => true}  
+    -if @exclude_tags.member?(tag.name) 
+      %i.icon-remove
+    -else
+      %i.icon-ok
+    
+
+
+  
+  

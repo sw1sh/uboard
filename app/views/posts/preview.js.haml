@@ -2,5 +2,5 @@ var div = $('#more#{@post.id}');
 
 div.html("#{j render :partial => 'preview', :locals => { :post => @post} }");
 
-div.slideToggle('slow');
-
+//div.slideToggle('slow');
+div.collapse('toggle');

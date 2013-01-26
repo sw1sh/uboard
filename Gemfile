@@ -19,6 +19,7 @@ gem 'prototype-rails'
 gem 'acts-as-taggable-on'
 gem 'recaptcha'
 gem 'data_uri'
+gem 'bootstrap-sass'
 
 group :production do
   # gems specifically for Heroku go here

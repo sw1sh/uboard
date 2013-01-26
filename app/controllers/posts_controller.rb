@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   def index  
 
-    session[:posts_showed] = 0
+    session[:posts_showed] = 2
     @posts_showed = session[:posts_showed]
 
     @include_tags = session[:include_tags].nil? ? [] : session[:include_tags]
@@ -131,9 +131,7 @@ class PostsController < ApplicationController
   end
 
   def search
-
-    @posts_showed ||= session[:posts_showed]
-
+    
     @search = params[:search]
     @include_tags = session[:include_tags]
     @exclude_tags = session[:exclude_tags]
@@ -147,11 +145,13 @@ class PostsController < ApplicationController
       @posts = @posts.tagged_with(@exclude_tags, :exclude => true)
     end
     @posts = @posts.search(@search)
-    render :partial => 'list', :locals => { :posts => @posts}
+    
+    @posts_showed = session[:posts_showed]
+    
+    render :partial => 'list'
   end
 
   def tags
-    session[:posts_showed] = 0
 
     include_tag = params[:include_tag]
     exclude_tag = params[:exclude_tag]
@@ -185,10 +185,8 @@ class PostsController < ApplicationController
   end
 
   def show_more
-     @posts_showed = session[:posts_showed] + 2
-     session[:posts_showed] = @posts_showed
-     
-     search
+     session[:posts_showed] = session[:posts_showed] + 2
+     render :partial => "blank"
   end
 
 end

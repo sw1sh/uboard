@@ -1,0 +1,11 @@
+= link_to "U-board", root_path, :class => 'brand'
+%ul.nav
+  %li
+    = link_to "New Post", new_post_path
+  %li
+    - if !admin_exists?
+      = link_to "Sign up", new_admin_registration_path
+    - elsif admin_signed_in? 
+      = link_to "Sign out", destroy_admin_session_path, :method => :delete
+    - else
+      = link_to "Sign in", new_admin_session_path
