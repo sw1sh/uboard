@@ -20,6 +20,7 @@ gem 'acts-as-taggable-on'
 gem 'recaptcha'
 gem 'data_uri'
 gem 'bootstrap-sass'
+gem 'pusher'
 
 group :production do
   # gems specifically for Heroku go here

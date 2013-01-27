@@ -16,6 +16,10 @@ Uboard::Application.routes.draw do
   end
   resources :posts
   resources :comments
+  
+  match 'chat' => 'chat#index'
+  match 'chat/send' => 'chat#send_msg'
+  
   root :to => 'posts#index'
   
   # The priority is based upon order of creation:

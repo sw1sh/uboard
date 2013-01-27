@@ -1,4 +1,10 @@
+require 'pusher'
+
 Uboard::Application.configure do
+  
+  Pusher.app_id = '36177'
+  Pusher.key    = '111ea3d89cd474fab9a5'
+  Pusher.secret = '0f5161216f67ff6da246'
   
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 

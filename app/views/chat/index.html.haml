@@ -1,0 +1,64 @@
+= javascript_include_tag "http://js.pusher.com/1.12/pusher.min.js"
+
+:javascript
+  var pusher = new Pusher('#{Pusher.key}'); // uses your API KEY
+  var channel = pusher.subscribe('test_channel');
+
+  $(function(){
+    var history = [], idx = 0;
+    $("#message").focus();
+
+    $(window).bind("focus", function(){
+      $("#message").focus();
+    });
+
+    var logpanel = $("#log");
+
+    function sendmsg(){
+      var msg = $("#message").val();
+      history.unshift(msg);
+      idx = 0;
+      $("#message").val("");
+    };
+
+    $("#log").bind('click', function(){
+      $("#message").focus()
+    });
+
+    $("#sendbtn").bind("click", function(){
+      sendmsg();
+      $("#message").focus()
+    });
+
+    $("#message").bind("keydown", function(e){
+      if(e.which == 13){
+        sendmsg();
+      }
+    });
+
+
+    function scrollToBottom() {
+        window.scrollBy(0, document.body.scrollHeight - document.body.scrollTop);
+    };
+
+    function log(data){
+      logpanel.append("<p>"+data+"</p>");
+      scrollToBottom();
+    };
+
+    channel.bind('message', function(data) {
+      log(data.message);
+    });
+ 
+  });
+
+= form_tag url_for(:controller => 'chat', :action => 'send_msg'), :class => 'form', :remote => true do
+  .control-group
+    = label_tag "msg", "Message:", :class => 'control-label'
+    .controls
+      = text_field_tag "input", "", :name => 'message', :id => 'message'
+  .control-group
+    .controls
+      = submit_tag 'Send', :class => 'btn', :id => 'send'
+
+#log

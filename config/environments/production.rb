@@ -1,4 +1,10 @@
+require 'pusher'
+
 Uboard::Application.configure do
+  
+  Pusher.app_id = '36176'
+  Pusher.key    = 'ead7103311db6cd668ed'
+  Pusher.secret = 'f2a5d2134c0f01cb3792'
   
   config.action_mailer.default_url_options = { :host => 'uboard.herokuapp.com:80' }
   

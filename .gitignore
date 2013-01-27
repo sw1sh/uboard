@@ -13,9 +13,9 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-/config/dropboxsession.yml
+#/config/dropboxsession.yml
 /db/seeds.rb
 /nbproject
-/Gemfile.lock
-/config/initializers/setup_mail.rb
-/config/initializers/recaptcha.rb
+#/Gemfile.lock
+#/config/initializers/setup_mail.rb
+#/config/initializers/recaptcha.rb
