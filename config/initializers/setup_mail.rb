@@ -9,5 +9,5 @@ ActionMailer::Base.smtp_settings = {
   :domain => 'gmail.com',
   :authentication => :plain,
   :user_name => 'uboarders@gmail.com',
-  :password => ',fkfkftxybr'
+  :password => 'rfhfrfnbwf'
 }

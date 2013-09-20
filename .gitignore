@@ -19,3 +19,4 @@
 #/Gemfile.lock
 #/config/initializers/setup_mail.rb
 #/config/initializers/recaptcha.rb
+*.un~

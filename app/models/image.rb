@@ -3,7 +3,8 @@ class Image < ActiveRecord::Base
   belongs_to :post
   has_attached_file :image,
     :styles => { :large => "640x480", :thumb => "100x100>" },
-    :storage => :Dropboxstorage,
+    :storage => :dropbox,
+    :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
     :path => "/uboard/:rails_env/:attachment/:id/:style/:filename"
 
   validates_attachment_size :image, :less_than => 2.megabytes
